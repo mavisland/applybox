@@ -2,6 +2,20 @@
 
 ApplyBox is an application tracking system designed to help job seekers manage their job applications, keep track of important documents, and stay organized during the job search process.
 
+## Motivation
+
+Job hunting can be an overwhelming and complex process. As someone who has experienced this firsthand, I found myself struggling to keep track of all my applications across multiple companies, different stages of the hiring process, and various documents (resumes, cover letters, etc.) customized for each position.
+
+I created ApplyBox to solve these challenges:
+
+- **Organization**: Say goodbye to scattered spreadsheets, notes, and documents. ApplyBox provides a central hub for all your job search activities.
+- **Visibility**: Get a clear picture of your application status with a comprehensive dashboard that shows where you stand in each process.
+- **Documentation**: Store all application-related files in one place, making it easy to retrieve the specific resume version or cover letter you sent to a company.
+- **Follow-up**: Never miss an opportunity by tracking which applications need follow-up and when.
+- **Data-Driven Strategy**: Analyze your job search patterns to improve your approach, understand which industries you're targeting most, and see conversion rates at each application stage.
+
+Whether you're actively looking for your next role or simply building a system to track future career opportunities, ApplyBox helps transform the chaotic job search process into a structured, manageable journey.
+
 ## Features
 
 - Track job applications with detailed information (position, status, notes)
