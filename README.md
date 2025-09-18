@@ -102,6 +102,14 @@ Track every job application:
 - Notes about the application
 - Upload relevant documents (resume, cover letter, etc.)
 
+### Quick Application Form
+
+Add a complete job application in a single step:
+- Create new company or select existing one
+- Add HR contact information if needed
+- Enter application details and documents
+- Save everything with a single form submission
+
 ## Dashboard
 
 The dashboard provides an overview of your job search:
