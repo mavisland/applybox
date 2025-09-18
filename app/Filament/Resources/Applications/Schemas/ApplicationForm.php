@@ -32,12 +32,12 @@ class ApplicationForm
                     ->required(),
                 Select::make('status')
                     ->options([
-            'applied' => 'Applied',
-            'interview' => 'Interview',
-            'offer' => 'Offer',
-            'rejected' => 'Rejected',
-            'withdrawn' => 'Withdrawn',
-        ])
+                        'applied' => 'Applied',
+                        'interview' => 'Interview',
+                        'offer' => 'Offer',
+                        'rejected' => 'Rejected',
+                        'withdrawn' => 'Withdrawn',
+                    ])
                     ->required(),
                 Textarea::make('notes'),
                 FileUpload::make('documents')

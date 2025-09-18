@@ -9,7 +9,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Application extends Model implements HasMedia
 {
     use InteractsWithMedia;
-    
+
     protected $fillable = [
         'company_id',
         'hr_contact_id',
@@ -22,7 +22,7 @@ class Application extends Model implements HasMedia
     protected $casts = [
         'applied_date' => 'date',
     ];
-    
+
     public function company()
     {
         return $this->belongsTo(Company::class);
@@ -32,7 +32,7 @@ class Application extends Model implements HasMedia
     {
         return $this->belongsTo(HrContact::class);
     }
-    
+
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('documents');

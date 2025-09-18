@@ -30,7 +30,7 @@ class ApplicationsTable
                     ->sortable(),
                 TextColumn::make('status')
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         'applied' => 'gray',
                         'interview' => 'info',
                         'offer' => 'success',
