@@ -24,9 +24,23 @@ class QuickApplicationForm extends Page implements HasForms
 {
     use InteractsWithForms;
 
+    // Title for the page
     protected static ?string $title = 'Quick Application Form';
 
+    // Override the getTitle method (non-static)
+    public function getTitle(): string
+    {
+        return __('Quick Application Form');
+    }
+
+    // Navigation label for sidebar
     protected static ?string $navigationLabel = 'Quick Application';
+
+    // Override the static getNavigationLabel method
+    public static function getNavigationLabel(): string
+    {
+        return __('Quick Application');
+    }
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-plus-circle';
 
@@ -45,38 +59,38 @@ class QuickApplicationForm extends Page implements HasForms
     {
         return $form
             ->schema([
-                Section::make('Company Information')
-                    ->description('Enter company details or select an existing one')
+                Section::make(__('Company Information'))
+                    ->description(__('Enter company details or select an existing one'))
                     ->schema([
                         TextInput::make('company_name')
-                            ->label('Company Name')
+                            ->label(__('Company Name'))
                             ->required()
                             ->maxLength(255),
                         TextInput::make('company_industry')
-                            ->label('Industry')
+                            ->label(__('Industry'))
                             ->maxLength(255),
                         TextInput::make('company_email')
-                            ->label('Email')
+                            ->label(__('Email'))
                             ->email()
                             ->maxLength(255),
                         TextInput::make('company_phone')
-                            ->label('Phone')
+                            ->label(__('Phone'))
                             ->tel()
                             ->maxLength(255),
                         TextInput::make('company_website')
-                            ->label('Website')
+                            ->label(__('Website'))
                             ->url()
                             ->maxLength(255),
                         Textarea::make('company_address')
-                            ->label('Address')
+                            ->label(__('Address'))
                             ->rows(3),
                     ])->columns(2),
 
-                Section::make('HR Contact')
-                    ->description('Enter HR contact details (optional)')
+                Section::make(__('HR Contact'))
+                    ->description(__('Enter HR contact details (optional)'))
                     ->schema([
                         Select::make('existing_hr_contact_id')
-                            ->label('Select Existing HR Contact')
+                            ->label(__('Select Existing HR Contact'))
                             ->options(function (callable $get) {
                                 $companyId = $get('existing_company_id');
                                 if (!$companyId)
@@ -102,43 +116,47 @@ class QuickApplicationForm extends Page implements HasForms
                                 }
                             }),
                         TextInput::make('hr_name')
-                            ->label('Name')
+                            ->label(__('Name'))
                             ->maxLength(255),
                         TextInput::make('hr_position')
-                            ->label('Position')
+                            ->label(__('Position'))
                             ->maxLength(255),
                         TextInput::make('hr_email')
-                            ->label('Email')
+                            ->label(__('Email'))
                             ->email()
                             ->maxLength(255),
                         TextInput::make('hr_phone')
-                            ->label('Phone')
+                            ->label(__('Phone'))
                             ->tel()
                             ->maxLength(255),
                     ])->columns(2),
 
-                Section::make('Application Details')
-                    ->description('Enter details about your application')
+                Section::make(__('Application Details'))
+                    ->description(__('Enter details about your application'))
                     ->schema([
                         TextInput::make('position')
+                            ->label(__('Position'))
                             ->required()
                             ->maxLength(255),
                         DatePicker::make('applied_date')
+                            ->label(__('Applied Date'))
                             ->required()
                             ->default(now()),
                         Select::make('status')
                             ->options([
-                                'applied' => 'Applied',
-                                'interview' => 'Interview',
-                                'offer' => 'Offer',
-                                'rejected' => 'Rejected',
-                                'withdrawn' => 'Withdrawn',
+                                'applied' => __('Applied'),
+                                'interview' => __('Interview'),
+                                'offer' => __('Offer'),
+                                'rejected' => __('Rejected'),
+                                'withdrawn' => __('Withdrawn'),
                             ])
                             ->required()
                             ->default('applied'),
                         Textarea::make('notes')
+                            ->label(__('Notes'))
                             ->rows(3),
                         FileUpload::make('documents')
+                            ->label(__('Documents'))
                             ->multiple()
                             ->disk('public')
                             ->directory('application-documents')
@@ -205,7 +223,7 @@ class QuickApplicationForm extends Page implements HasForms
             DB::commit();
 
             Notification::make()
-                ->title('Application created successfully')
+                ->title(__('Application created successfully'))
                 ->success()
                 ->send();
 
@@ -215,7 +233,7 @@ class QuickApplicationForm extends Page implements HasForms
             DB::rollBack();
 
             Notification::make()
-                ->title('Error creating application')
+                ->title(__('Error creating application'))
                 ->body($e->getMessage())
                 ->danger()
                 ->send();
