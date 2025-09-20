@@ -6,7 +6,6 @@ use App\Models\Application;
 use App\Models\Company;
 use App\Models\HrContact;
 use BackedEnum;
-use Filament\Forms\Form;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
@@ -55,9 +54,9 @@ class QuickApplicationForm extends Page implements HasForms
         $this->form->fill();
     }
 
-    public function form(Form|Schema $form): Form|Schema
+    public function form(Schema $schema)
     {
-        return $form
+        return $schema
             ->schema([
                 Section::make(__('Company Information'))
                     ->description(__('Enter company details or select an existing one'))
@@ -144,6 +143,7 @@ class QuickApplicationForm extends Page implements HasForms
                             ->default(now()),
                         Select::make('status')
                             ->options([
+                                'draft' => __('Draft'),
                                 'applied' => __('Applied'),
                                 'interview' => __('Interview'),
                                 'offer' => __('Offer'),
@@ -151,7 +151,7 @@ class QuickApplicationForm extends Page implements HasForms
                                 'withdrawn' => __('Withdrawn'),
                             ])
                             ->required()
-                            ->default('applied'),
+                            ->default('draft'),
                         Textarea::make('notes')
                             ->label(__('Notes'))
                             ->rows(3),

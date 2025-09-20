@@ -32,6 +32,7 @@ class ApplicationForm
                     ->required(),
                 Select::make('status')
                     ->options([
+                        'draft' => 'Draft',
                         'applied' => 'Applied',
                         'interview' => 'Interview',
                         'offer' => 'Offer',
