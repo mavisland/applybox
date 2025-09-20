@@ -17,6 +17,7 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use Filament\Support\Icons\Heroicon;
 use Illuminate\Support\Facades\DB;
 
 class QuickApplicationForm extends Page implements HasForms
@@ -41,7 +42,9 @@ class QuickApplicationForm extends Page implements HasForms
         return __('Quick Application');
     }
 
-    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-plus-circle';
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPlusCircle;
+
+    protected static string|BackedEnum|null $activeNavigationIcon = Heroicon::PlusCircle;
 
     protected static ?int $navigationSort = 1;
 

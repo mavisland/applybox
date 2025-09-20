@@ -28,5 +28,9 @@
     "Application created successfully": "Başvuru başarıyla oluşturuldu",
     "Error creating application": "Başvuru oluşturulurken hata oluştu",
     "Documents": "Belgeler",
-    "Save Application": "Başvuruyu Kaydet"
+    "Save Application": "Başvuruyu Kaydet",
+    "Created At": "Oluşturulma Tarihi",
+    "Updated At": "Güncellenme Tarihi",
+    "Application": "Başvuru",
+    "Applications": "Başvurular"
 }

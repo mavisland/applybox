@@ -2,8 +2,6 @@
 
 namespace App\Filament\Resources\Applications\Schemas;
 
-use App\Models\Company;
-use App\Models\HrContact;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
@@ -18,31 +16,38 @@ class ApplicationForm
         return $schema
             ->components([
                 Select::make('company_id')
+                    ->label(__('Company Name'))
                     ->relationship('company', 'name')
                     ->searchable()
                     ->preload()
                     ->required(),
                 Select::make('hr_contact_id')
+                    ->label(__('HR Contact'))
                     ->relationship('hrContact', 'name')
                     ->searchable()
                     ->preload(),
                 TextInput::make('position')
+                    ->label(__('Position'))
                     ->required(),
                 DatePicker::make('applied_date')
+                    ->label(__('Applied Date'))
                     ->required(),
                 Select::make('status')
+                    ->label(__('Status'))
                     ->options([
-                        'draft' => 'Draft',
-                        'applied' => 'Applied',
-                        'interview' => 'Interview',
-                        'offer' => 'Offer',
-                        'rejected' => 'Rejected',
-                        'withdrawn' => 'Withdrawn',
+                        'draft' => __('Draft'),
+                        'applied' => __('Applied'),
+                        'interview' => __('Interview'),
+                        'offer' => __('Offer'),
+                        'rejected' => __('Rejected'),
+                        'withdrawn' => __('Withdrawn'),
                     ])
                     ->required(),
-                Textarea::make('notes'),
+                Textarea::make('notes')
+                    ->label(__('Notes'))
+                    ->rows(3),
                 FileUpload::make('documents')
-                    ->label('Documents')
+                    ->label(__('Documents'))
                     ->multiple()
                     ->disk('public')
                     ->directory('application-documents'),

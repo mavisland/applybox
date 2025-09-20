@@ -15,20 +15,23 @@ class ApplicationsTable
         return $table
             ->columns([
                 TextColumn::make('company.name')
-                    ->label('Company')
+                    ->label(__('Company Name'))
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('hrContact.name')
-                    ->label('HR Contact')
+                    ->label(__('HR Contact'))
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
                 TextColumn::make('position')
+                    ->label(__('Position'))
                     ->searchable(),
                 TextColumn::make('applied_date')
+                    ->label(__('Applied Date'))
                     ->date()
                     ->sortable(),
                 TextColumn::make('status')
+                    ->label(__('Status'))
                     ->badge()
                     ->color(fn(string $state): string => match ($state) {
                         'applied' => 'gray',
@@ -39,10 +42,12 @@ class ApplicationsTable
                         default => 'gray',
                     }),
                 TextColumn::make('created_at')
+                    ->label(__('Created At'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
+                    ->label(__('Updated At'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -57,6 +62,9 @@ class ApplicationsTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->emptyStateHeading(__('application.empty_state.heading'))
+            ->emptyStateDescription(__('application.empty_state.description'))
+            ->emptyStateIcon('heroicon-o-document-text');
     }
 }

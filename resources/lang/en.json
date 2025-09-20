@@ -28,5 +28,9 @@
     "Application created successfully": "Application created successfully",
     "Error creating application": "Error creating application",
     "Documents": "Documents",
-    "Save Application": "Save Application"
+    "Save Application": "Save Application",
+    "Created At": "Created At",
+    "Updated At": "Updated At",
+    "Application": "Application",
+    "Applications": "Applications"
 }
