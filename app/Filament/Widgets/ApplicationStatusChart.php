@@ -10,6 +10,11 @@ class ApplicationStatusChart extends ChartWidget
 {
     protected ?string $heading = 'Application Status Chart';
 
+    public function getHeading(): ?string
+    {
+        return __('Application Status Chart');
+    }
+
     protected function getData(): array
     {
         $statusCounts = Application::select('status', DB::raw('count(*) as count'))
@@ -17,7 +22,14 @@ class ApplicationStatusChart extends ChartWidget
             ->pluck('count', 'status')
             ->toArray();
 
-        $labels = ['Applied', 'Interview', 'Offer', 'Rejected', 'Withdrawn'];
+        $labels = [
+            __('Draft'),
+            __('Applied'),
+            __('Interview'),
+            __('Offer'),
+            __('Rejected'),
+            __('Withdrawn')
+        ];
         $data = [];
 
         foreach ($labels as $label) {
@@ -28,9 +40,10 @@ class ApplicationStatusChart extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => 'Applications by Status',
+                    'label' => __('Applications by Status'),
                     'data' => $data,
                     'backgroundColor' => [
+                        'rgb(65, 105, 225)', // royal blue
                         'rgb(59, 130, 246)', // blue
                         'rgb(16, 185, 129)', // green
                         'rgb(245, 158, 11)', // yellow
