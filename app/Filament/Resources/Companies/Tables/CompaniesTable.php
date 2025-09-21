@@ -15,21 +15,27 @@ class CompaniesTable
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label(__('Company Name'))
                     ->searchable(),
                 TextColumn::make('industry')
+                    ->label(__('Industry'))
                     ->searchable(),
                 TextColumn::make('phone')
+                    ->label(__('Phone'))
                     ->searchable(),
                 TextColumn::make('email')
-                    ->label('Email address')
+                    ->label(__('Email'))
                     ->searchable(),
                 TextColumn::make('website')
+                    ->label(__('Website'))
                     ->searchable(),
                 TextColumn::make('created_at')
+                    ->label(__('Created at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
+                    ->label(__('Updated at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -44,6 +50,9 @@ class CompaniesTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->emptyStateHeading(__('company.empty_state.heading'))
+            ->emptyStateDescription(__('company.empty_state.description'))
+            ->emptyStateIcon('heroicon-o-document-text');
     }
 }

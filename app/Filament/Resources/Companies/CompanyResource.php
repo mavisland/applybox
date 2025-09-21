@@ -18,9 +18,37 @@ class CompanyResource extends Resource
 {
     protected static ?string $model = Company::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    public static function getModelLabel(): string
+    {
+        return __('Company');
+    }
 
-    protected static ?string $recordTitleAttribute = 'Company';
+    protected static ?string $title = 'Companies';
+
+    public function getTitle(): string
+    {
+        return __('Companies');
+    }
+
+    protected static ?string $pluralModelLabel = 'Companies';
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('Companies');
+    }
+
+    protected static ?string $navigationLabel = 'Companies';
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Companies');
+    }
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBuildingOffice;
+
+    protected static string|BackedEnum|null $activeNavigationIcon = Heroicon::BuildingOffice;
+
+    protected static ?int $navigationSort = 3;
 
     public static function form(Schema $schema): Schema
     {
